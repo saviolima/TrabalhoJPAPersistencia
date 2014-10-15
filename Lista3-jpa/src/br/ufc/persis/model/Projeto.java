@@ -1,6 +1,7 @@
 package br.ufc.persis.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -15,7 +16,7 @@ public class Projeto {
 	
 	private String periodo;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Departamento departamento;
 
 	public String getNome() {
