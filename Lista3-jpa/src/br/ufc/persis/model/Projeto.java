@@ -1,9 +1,12 @@
 package br.ufc.persis.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 
 @Entity
@@ -18,6 +21,17 @@ public class Projeto {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Departamento departamento;
+	
+	@OneToMany(mappedBy = "projeto")
+	private List<Pesquisador> pesquisadores;
+
+	public List<Pesquisador> getPesquisadores() {
+		return pesquisadores;
+	}
+
+	public void setPesquisadores(List<Pesquisador> pesquisadores) {
+		this.pesquisadores = pesquisadores;
+	}
 
 	public String getNome() {
 		return nome;

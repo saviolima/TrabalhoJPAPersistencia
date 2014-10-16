@@ -1,6 +1,7 @@
 package br.ufc.persis.model;
 
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -31,6 +33,27 @@ public class Funcionario {
 	
 	@ManyToOne
 	private Departamento departamento;
+	
+	@OneToMany (mappedBy = "funcionario")
+	private List<Dependente> dependentes;
+	
+	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<Dependente> getDependentes() {
+		return dependentes;
+	}
+
+	public void setDependentes(List<Dependente> dependentes) {
+		this.dependentes = dependentes;
+	}
 
 	public String getNome() {
 		return nome;
